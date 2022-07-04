@@ -1,0 +1,117 @@
+* {
+    font-family: 'Sora', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+/* navbar */
+#navbar img {
+    width: 200px;
+    padding: 10px;
+    margin-left: 70px;
+}
+
+#navbar {
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 5px 0;
+}
+
+#navbar a {
+    font-size: 16px;
+    color: #000;
+    margin-right: 20px;
+}
+
+#navbar a:hover {
+    color: #ff6900;
+}
+
+.btn-primary {
+    background-color: #ff6900;
+    border: 2px solid #000;
+}
+
+.btn-primary:hover { 
+    background-color: #030302;
+    border-color: #000;
+}
+
+.container2 {
+    background-color: #33f1e2;
+}
+
+.container3 {
+    background-color: #ff6900;
+    padding-left: 115px;
+}
+
+.title1 {
+   font-weight: bold;
+}
+
+.title2 {
+    font-weight: bold;
+    padding-top: 100px;
+}
+
+.title3 {
+    font-weight: bold;
+    padding-top: 100px;
+}
+
+.img3 {
+    padding-top: 100px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+/* Event create page */
+#event-create-container {
+    padding: 30px
+  }
+  
+  #event-create-container label {
+    font-weight: bold;
+  }
+  
+  #event-create-container input,
+  #event-create-container select,
+  #event-create-container textarea {
+    font-size: 12px;
+  }
+  
+
+/* footer */
+footer {
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+    height: 100px;
+   
+}
+
+footer p {
+   margin-bottom: 0;
+}

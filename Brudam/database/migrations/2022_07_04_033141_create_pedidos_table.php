@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_pedidos', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->text('descrição');
+            $table->string('cidade');
+            $table->date('data_entrega');
+            $table->string('valor_frete');
             $table->timestamps();
-            $table->string("title");
-            $table->string("request_date");
-            $table->string("freight_value");
         });
     }
 
@@ -29,7 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_pedidos');
-
+        Schema::dropIfExists('pedidos');
     }
 };
