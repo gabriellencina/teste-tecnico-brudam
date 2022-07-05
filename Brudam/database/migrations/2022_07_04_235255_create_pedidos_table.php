@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->text('descrição');
-            $table->string('cidade');
-            $table->date('data_entrega');
-            $table->string('valor_frete');
+            $table->json('title');
+            $table->json('description');
+            $table->json('city');
+            $table->date('date');
             $table->timestamps();
         });
     }

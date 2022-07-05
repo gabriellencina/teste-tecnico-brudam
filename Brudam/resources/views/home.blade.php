@@ -10,7 +10,7 @@
              Ganhe produtividade e fidelize seus clientes com o TMS Brudam, junte-se aos mais de 3 mil clientes que confiam na Brudam
              e prepare sua gestão para decolar no transporte de cargas. Faça agora seu pedido de entrega conosco!</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Saber mais</button>
+         <a href="/saber"class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Saber mais</a>
         </div>
       </div>
       <div class="col-lg-4 p-0 overflow-hidden">
@@ -45,6 +45,4 @@
         </div>
       </div>
 </div>
-
-
 @endsection

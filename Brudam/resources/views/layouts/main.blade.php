@@ -17,35 +17,60 @@
         <!-- CSS da aplicação -->
         <link rel="stylesheet" href="/css/styles.css">
     </head>
-    <body>
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="collapse navbar-collapse" id="navbar">
-            <a href="/" class="navbar-brand">
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse" id="navbar">
+             <a href="/" class="navbar-brand">
               <img src="/img/brudam.png" alt="Brudam Logo">
-            </a>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a href="/" class="nav-link">Pedidos</a>
-              </li>
-              <li class="nav-item">
+             </a>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/" class="nav-link">Inicio</a>
+            </li>
+            <li class="nav-item">
                 <a href="/events/create" class="nav-link">Fazer Pedidos</a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">Entrar</a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">Cadastrar</a>
-              </li>
+            </li>
+              @auth
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link">Meus pedidos</a>
+            </li>
+            <li class="nav-item">
+                <form action="/logout" method="POST">
+                  @csrf
+                  <a href="/logout" 
+                  class="nav-link" 
+                  onclick="event.preventDefault();
+                  this.closest('form').submit();">Sair</a>
+                </form>
+            </li>
+              @endauth
+              @guest
+            <li class="nav-item">
+                <a href="/login" class="nav-link">Entrar</a>
+            </li>
+            <li class="nav-item">
+                <a href="/register" class="nav-link">Cadastre-se</a>
+            </li>
+               @endguest
             </ul>
           </div>
         </nav>
       </header>
-      @yield('content')
-      <footer>
+      <main>
+         <div class="container-fluid">
+           <div class="row">
+             @if(session('msg'))
+             <p class="msg">{{ session('msg') }}</p>
+             @endif
+            </div>
+            @yield('content')
+         </div>
+      </main>
+       <footer>
         <p>Brudam &copy; 2022</p>
-      </footer>
+       </footer>
       <script src="/js/scripts.js"></script>
       <script src="https://kit.fontawesome.com/de5e098c52.js" crossorigin="anonymous"></script>
-    </body>
+  </body>
 </html>

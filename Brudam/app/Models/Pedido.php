@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array',
+        'city' => 'array'
+    ];
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
+
+ 
 }
