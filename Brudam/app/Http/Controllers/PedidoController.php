@@ -24,23 +24,55 @@ class PedidoController extends Controller
     
     
     public function store(Request $request) {
+        
         $pedido = new Pedido;
 
         $pedido->title = $request->title;
         $pedido->description = $request->description;
         $pedido->city = $request->city;
         $pedido->date = $request->date;
-
+         
+        $user = auth()->user();
+        $pedido->user_id = $user->id;
+        
         $pedido->save();
 
         return redirect('/')->with('msg', 'Parabéns, seu pedido foi relizado com sucesso!');
-    }
+    } 
       
 
     public function dashboard() {
+
+         $user = auth()->user();
+
+         $pedidos = $user->pedidos;
+          
+          return view('events.dashboard',['pedidos' => $pedidos]);
+    }
+
+
+    public function destroy($id) {
+
+        Pedido::findOrFail($id)->delete();
+
+        return redirect('/dashboard')->with('msg', 'Pedido excluído com sucesso!');
+    }
+
+
+    public function edit($id) {
+
+        $pedido = Pedido::findOrFail($id);
+
+        return view('events.edit', ['pedido' => $pedido]);
+    } 
+
+    
+    public function update(Request $request) {
+
+        Pedido::findOrFail($request->id)->update($request->all());
         
-          $pedidos = Pedido::all();
-          return view('events.dashboard',['pedidos'=> $pedidos]);
+        return redirect('/dashboard')->with('msg', 'Evento editado com sucesso!');
+
     }
 
 

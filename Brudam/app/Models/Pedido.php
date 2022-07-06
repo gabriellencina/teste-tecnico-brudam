@@ -14,6 +14,10 @@ class Pedido extends Model
         'city' => 'array'
     ];
 
+    
+    protected $guarded = [];
+
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }

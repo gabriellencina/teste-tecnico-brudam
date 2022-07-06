@@ -4,7 +4,7 @@
 
 @section('content')
 <div id="event-create-container" class="col-md-6 offset-md-3">
-  <h1 class="title">Faça seu pedido</h1>
+  <h1 class="title-pedidos">Faça seu pedido</h1>
    <form action="/events" method="POST" class="container-form">
       @csrf
          <div class="form-group">
