@@ -29,7 +29,7 @@
                 <a href="/" class="nav-link">Inicio</a>
             </li>
             <li class="nav-item">
-                <a href="/events/create" class="nav-link">Fazer Pedidos</a>
+                <a href="/events/create" class="nav-link">Adicionar Pedido</a>
             </li>
               @auth
             <li class="nav-item">

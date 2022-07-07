@@ -132,6 +132,7 @@ header {
 
 .title-pedidos {
     font-weight: bold;
+    padding-left: 20px;
 }
 
 /* Dashboard */
@@ -142,12 +143,20 @@ header {
 }
 
 .dashboard-events-container th {
-    width: 6%;
+    width: 10%;
     flex-direction: row;
 }
 
 .dashboard-events-container form {
-    display: inline-block;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.dashboard-events-container td {
+    width: 200px;
+    overflow-wrap: break-word;  
+    word-wrap: break-word; 
+    word-break: break-word;
 }
 
 .botao-editar {
@@ -163,6 +172,7 @@ header {
 .botao-excluir {
     background-color: #ff6900;
     border: 2px solid #000;
+    padding-right: 8px;
 }
 
 .botao-excluir:hover {
@@ -173,7 +183,10 @@ header {
 /* Edit */
 .title-editando {
     font-weight: bold;
+    padding-left: 20px;
+    color:#ff6900;
 }
+
 
 /* footer */
 footer {

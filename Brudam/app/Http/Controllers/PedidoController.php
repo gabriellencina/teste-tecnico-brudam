@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
+use App\Http\Requests\StoreUpdateUserFormRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Pedido;
 use App\Models\User;
 
 class PedidoController extends Controller
-{
+{       
 
     public function index() {
         
@@ -19,14 +20,15 @@ class PedidoController extends Controller
 
 
     public function create() {
+      
         return view('events.create');
     }
     
     
-    public function store(Request $request) {
-        
+    public function store(StoreUpdateUserFormRequest $request) {
+ 
         $pedido = new Pedido;
-
+    
         $pedido->title = $request->title;
         $pedido->description = $request->description;
         $pedido->city = $request->city;
@@ -34,10 +36,10 @@ class PedidoController extends Controller
          
         $user = auth()->user();
         $pedido->user_id = $user->id;
-        
+   
         $pedido->save();
-
-        return redirect('/')->with('msg', 'Parabéns, seu pedido foi relizado com sucesso!');
+        
+        return redirect('/dashboard')->with('msg', 'Parabéns, seu pedido foi relizado com sucesso!');
     } 
       
 
@@ -45,9 +47,9 @@ class PedidoController extends Controller
 
          $user = auth()->user();
 
-         $pedidos = $user->pedidos;
+         $pedidos = $user->pedidos;  
           
-          return view('events.dashboard',['pedidos' => $pedidos]);
+         return view('events.dashboard',['pedidos' => $pedidos]);
     }
 
 
@@ -67,7 +69,7 @@ class PedidoController extends Controller
     } 
 
     
-    public function update(Request $request) {
+    public function update(StoreUpdateUserFormRequest $request) {
 
         Pedido::findOrFail($request->id)->update($request->all());
         
