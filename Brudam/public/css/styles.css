@@ -140,6 +140,12 @@ header {
 .title-dashboard {
     font-weight: bold;
     padding: 50px;
+    padding-left: 170px;
+}
+
+.botao-dash {
+    padding-left: 58rem;
+    color: #29911e;
 }
 
 .dashboard-events-container th {
@@ -185,6 +191,25 @@ header {
     font-weight: bold;
     padding-left: 20px;
     color:#ff6900;
+}
+
+/* Saber mais */
+.title-saber {
+    font-weight: bold;
+}
+
+.container-saber {
+    background-color: #33f1e2;
+}
+
+.inititle {
+    font-weight: bold;
+}
+
+.title1 {
+    color: #ff6900;
+    padding-bottom: 15px;
+    font-size: 30px;
 }
 
 

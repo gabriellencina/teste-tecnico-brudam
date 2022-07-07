@@ -25,7 +25,7 @@ class StoreUpdateUserFormRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255|min:5|regex:/^[a-záàâãéèêíïóôõöúçñ ]+$/i',
-            'description' => 'required|string|max:255|min:3|regex:/^[a-záàâãéèêíïóôõöúçñ , \.]+$/i',
+            'description' => 'required|string|max:255|min:3',
             'city' => 'required|string|max:255|min:5|regex:/^[a-záàâãéèêíïóôõöúçñ , \.]+$/i',
             'date' => 'required'
             
@@ -43,7 +43,6 @@ class StoreUpdateUserFormRequest extends FormRequest
             'date.required' => 'O campo data de entrega é obrigatório',
             
             'title.regex' => 'Caracteres especiais não são permitidos no campo titulo',
-            'description.regex' => 'Caracteres especiais não são permitidos no campo descrição do pedido',
             'city.regex' => 'Caracteres especiais não são permitidos no campo cidade',
 
             'title.min' => 'O mínimo de caracteres aceito no campo titulo são 5',
