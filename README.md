@@ -54,23 +54,26 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a6110855
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
  ```
- 
- Change chmod composer
+ De o seguinte comando para instalar o composer
  ```
- sudo chmod -R 777
+ composer install --no-scripts
  ```
- 
- ```
- composer install
- ```
- 
  ```
  composer update
  ```
- 
- ```
-composer dump-autoload
- ```
+ para evitar erros de pastas realize o seguinte comando.
+```
+cd storage/
+mkdir -p framework/{sessions,views,cache}
+chmod -R 775 framework
+```
+retornamos para raiz do projeto com o comando a seguir:
+```
+~/Documents/teste-tecnico-brudam-main/storage$ cd ..
+~/Documents/teste-tecnico-brudam-main$
+
+```
+
 Logo em seguida rode no terminal o comando cp .env.example .env para gerar este arquivo no nosso projeto e configurarmos nele o banco de dados (postgreSQL):
  ```
 cp .env.example .env
