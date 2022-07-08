@@ -1,64 +1,119 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Projeto Brudam 🥇
+![imagembrudam](https://user-images.githubusercontent.com/54336473/178027541-0cf0468b-0987-4b0d-a6f6-c9d04fcbc5bd.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Objetivos 🚀
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O objetivo dessa sprint é fazer pedidos de entregas via endpoint e mostrar esses dados em um
+relatório para os clientes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* 1 - armazenar os pedidos de entregas
+* 2 - Criar pedidos de entregas via API
+* 3 - Mostrar em tela os pedidos feitos via API
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 📋 Pré-requisitos
 
-### Premium Partners
+* PHP 8.1.2 (no minimo 8.0.2)
+* Composer 2.2.6
+* Laravel 9.19.0
+* Docker 20.10.17
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+### 🔧 Instalação e execução da aplicação
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ Primeiro instale o php com os seguintes comandos usando o terminal:
 
-## Security Vulnerabilities
+```
+sudo apt install software-properties-common ca-certificates lsb-release apt-transport-https
+```
+```
+sudo apt update
+```
+```
+sudo add-apt-repository ppa:ondrej/php
+```
+```
+sudo apt update
+```
+```
+sudo apt install php8.1
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+ Segundo, vamos instalar o composer:
+ 
+ ```
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+ ```
+ 
+ Change chmod composer
+ ```
+ sudo chmod -R 777
+ ```
+ 
+ ```
+ composer install
+ ```
+ 
+ ```
+ composer update
+ ```
+ 
+ ```
+composer dump-autoload
+ ```
+Logo em seguida rode no terminal o comando cp .env.example .env para gerar este arquivo no nosso projeto e configurarmos nele o banco de dados (postgreSQL):
+ ```
+cp .env.example .env
+ ```
+ Entre no arquivo .env e altera os seguintes campos como no exemplo a seguir:
+* DB_CONNECTION=pgsql
+* DB_HOST=127.0.0.1
+* DB_PORT=5432
+* DB_DATABASE=postgres
+* DB_USERNAME=myusername
+* DB_PASSWORD=mypassword
 
-## License
+Agora vamos gerar nossa key
+```
+php artisan key:generate
+```
+ 
+ Feito as aleterações vamos subir o nosso banco de dados com o docker, executando o seguinte comando:
+ ```
+ docker run --name postgresql -e POSTGRES_USER=myusername -e POSTGRES_PASSWORD=mypassword -p 5432:5432 -d postgres
+ ```
+ Após isso rode o seguinte comando para fazer as migrations para o nosso banco de dados
+```
+php artisan migrate
+```
+Agora vamos rodar o comando npm install e depois o comando npm run dev
+```
+npm install
+```
+```
+npm run dev
+```
+Vamos rodar o nosso servidor com o comando php artisan serve
+```
+php artisan serve
+```
+Certifique-se que o **php artisan serve** esteja rodando junto com o **comando npm run dev**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+(Você pode usar o terminal do vscode e da sua máquina para rodar os dois)
+
+Após os testes matar o banco com o comando
+```
+docker rm -f postgres
+```
+ 
+ 
